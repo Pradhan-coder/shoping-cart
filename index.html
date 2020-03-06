@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shopping Cart</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <section>
+      <div id="check-out-area">
+        <div class="container">
+          <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+              <div class="cart-item">
+                <div class="row">
+                  <div class="col-md-7 center-item">
+                    <img src="images/product-1.png" alt="" />
+                    <h5>iPhone 11 128GB Black</h5>
+                  </div>
+
+                  <div class="col-md-5 center-item">
+                    <div class="input-group number-spinner">
+                      <button id="minusItem1" class="btn btn-default">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                      <input
+                        id="phoneItem1"
+                        type="text"
+                        class="form-control text-center"
+                        value="1"
+                      />
+                      <button id="plusItem1" class="btn btn-default">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                    <h5>$ <span id="currentPrice"> 1219</span></h5>
+                    <img src="images/remove.png" alt="" class="remove-item" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="cart-item">
+                <div class="row">
+                  <div class="col-md-7 center-item mx-auto">
+                    <img src="images/product-2.png" alt="" />
+                    <h5>iPhone 11 Silicone Case - Black</h5>
+                  </div>
+                  <div class="col-md-5 center-item">
+                    <div class="input-group number-spinner">
+                      <button id="minusItem2" class="btn btn-default">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                      <input
+                        id="caseItem1"
+                        type="text"
+                        class="form-control text-center"
+                        value="1"
+                      />
+                      <button id="plusItem2" class="btn btn-default">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                    <h5>$ <span id="currentPrice2">59</span></h5>
+                    <img src="images/remove.png" alt="" class="remove-item" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="cart-item">
+                <div class="row">
+                  <div class="col-md-8">
+                    <h5>Subtotal:</h5>
+                    <h5>Tax:</h5>
+                    <h5>Total:</h5>
+                  </div>
+
+                  <div class="col-md-4 status">
+                    <h5>$ <span id="subTotal">1278</span></h5>
+                    <h5>$0</h5>
+                    <h5>$<span id="netTotal">1278</span></h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 pt-4 pb-4">
+                <button
+                  id="checkOut"
+                  type="button"
+                  class="btn btn-success check-out"
+                >
+                  Check Out
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="confirm-area sign-bar">
+      <h1 class="text-center">Sign up & get our services for free!</h1>
+      <div class="submit-area">
+        <h4>Sign up</h4>
+        <input type="text" class="form-control" placeholder="Full Name" />
+        <br />
+        <input type="text" class="form-control" placeholder="Username" />
+        <br />
+        <input type="text" class="form-control" placeholder="Apple ID" />
+        <br />
+        <input type="text" class="form-control" placeholder="Address" />
+        <br />
+        <input type="text" class="form-control" placeholder="Phone No" />
+        <br />
+        <input type="text" class="form-control" placeholder="Email" />
+        <br />
+
+        <input type="password" class="form-control" placeholder="Password" />
+        <br />
+        <button class="btn btn-success">Create Account</button>
+        <br /><br />
+        <p>Already member?</p>
+        <a href="https://www.apple.com/">Sign in</a>
+      </div>
+    </div>
+    <script>
+      //checkout button event handler
+      const checkOutBtn = document.getElementById("checkOut");
+      checkOutBtn.addEventListener("click", function() {
+        const checkOutArea = document.getElementById("check-out-area");
+        checkOutArea.style.display = "none";
+        const confirmArea = document.getElementById("confirm-area");
+        confirmArea.style.display = "block";
+      });
+      //phone plus button event handler
+      const plusItem1Btn = document.getElementById("plusItem1");
+      plusItem1Btn.addEventListener("click", function() {
+        const phoneItem1 = document.getElementById("phoneItem1").value++;
+        const currentPrice = document.getElementById("currentPrice").innerText;
+        const currentPriceNumber = parseFloat(currentPrice);
+        const finalPrice1 = currentPriceNumber + 1219;
+        document.getElementById("currentPrice").innerText = finalPrice1;
+
+        const subTotal = document.getElementById("subTotal").innerText;
+        const totalPrice = parseFloat(subTotal);
+        const totalPhonePrice1 = totalPrice + 1219;
+
+        document.getElementById("subTotal").innerText = totalPhonePrice1;
+        document.getElementById("netTotal").innerText = totalPhonePrice1;
+      });
+
+      //phone minus button event handler
+      const minusItem1Btn = document.getElementById("minusItem1");
+      minusItem1Btn.addEventListener("click", function() {
+        const phoneItem1 = document.getElementById("phoneItem1");
+        if (phoneItem1.value <= 0 && minusValue1 <= 0) {
+          phoneItem1.value = 0;
+          minusValue1 = 0;
+        } else {
+          phoneItem1.value--;
+        }
+        const currentPrice = document.getElementById("currentPrice").innerText;
+        const currentPriceNumber = parseFloat(currentPrice);
+        const finalPrice2 = currentPriceNumber - 1219;
+
+        document.getElementById("currentPrice").innerText = finalPrice2;
+
+        const subTotal = document.getElementById("subTotal").innerText;
+        const totalPrice = parseFloat(subTotal);
+        const totalPhonePrice2 = totalPrice - 1219;
+
+        document.getElementById("subTotal").innerText = totalPhonePrice2;
+        document.getElementById("netTotal").innerText = totalPhonePrice2;
+      });
+
+      //case plus button event handler
+      const plusItem2Btn = document.getElementById("plusItem2");
+      plusItem2Btn.addEventListener("click", function() {
+        const caseItem1 = document.getElementById("caseItem1").value++;
+        const currentPrice2 = document.getElementById("currentPrice2")
+          .innerText;
+        const currentPrice2Number = parseFloat(currentPrice2);
+        const finalPrice2 = currentPrice2Number + 59;
+        document.getElementById("currentPrice2").innerText = finalPrice2;
+
+        const subTotal = document.getElementById("subTotal").innerText;
+        const totalPrice2 = parseFloat(subTotal);
+        const totalCasePrice1 = totalPrice2 + 59;
+
+        document.getElementById("subTotal").innerText = totalCasePrice1;
+        document.getElementById("netTotal").innerText = totalCasePrice1;
+      });
+
+      //case minus button event handler
+      const minusItem2Btn = document.getElementById("minusItem2");
+      minusItem2Btn.addEventListener("click", function() {
+        const caseItem1 = document.getElementById("caseItem1");
+        if (caseItem1.value <= 0 && minusValue2 <= 0) {
+          caseItem1.value = 0;
+          minusValue2 = 0;
+        } else {
+          caseItem1.value--;
+        }
+        const currentPrice2 = document.getElementById("currentPrice2")
+          .innerText;
+        const currentPrice2Number = parseFloat(currentPrice2);
+        const finalPrice2 = currentPrice2 - 59;
+
+        document.getElementById("currentPrice2").innerText = finalPrice2;
+
+        const subTotal = document.getElementById("subTotal").innerText;
+        const totalPrice2 = parseFloat(subTotal);
+        const totalCasePrice2 = totalPrice2 - 59;
+
+        document.getElementById("subTotal").innerText = totalCasePrice2;
+        document.getElementById("netTotal").innerText = totalCasePrice2;
+      });
+    </script>
+  </body>
+</html>
